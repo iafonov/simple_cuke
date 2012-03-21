@@ -33,9 +33,9 @@ Example
 =======
 
 ```gherkin
-Feature: Web server
-
 @appserver
+Feature: Application server
+
 Scenario: Apache should be running
   When I successfully run `ps aux`
   Then the output should contain "apache"
