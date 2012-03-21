@@ -2,17 +2,13 @@
 
 Description
 ===========
-Cookbook provides dead simple ability to test & verify node setup after chef run using [cucumber](https://github.com/cucumber/cucumber) & [aruba](https://github.com/cucumber/aruba). Unlike its competitors it's designed to be fully understood and ready to use in less then 5 minutes by the average developer.
+Cookbook provides dead simple way to test and verify node's setup after chef run using [cucumber](https://github.com/cucumber/cucumber) and [aruba](https://github.com/cucumber/aruba). Unlike its competitors it's designed to be fully understood and ready to use in less then 5 minutes by the average developer.
 
-It could be used as a tool to support BDD style in development of your infrastructure.
-
-How it works
-============
-After each chef-client run a set of cucumber features is executed on a target node. As simple as it is. No black magic involved.
+It could be used as a tool to support BDD style in development of your infrastructure and as regression testing tool.
 
 Requirements
 ============
-Cookbook depends on Opscode's chef_handler cookbook. (Run `knife cookbook site install chef_handler` to install it)
+Cookbook depends on Opscode's [chef_handler](http://community.opscode.com/cookbooks/chef_handler) cookbook. (Run `knife cookbook site install chef_handler` to install it)
 
 Attributes
 ==========
@@ -25,14 +21,19 @@ Usage
 3. Start writing cucumber features and place them in `files/default/suite/features` folder
 4. Enjoy
 
+How it works
+============
+After each chef-client run a set of cucumber features is executed on a target node. As simple as it is. No black magic involved.
+
+
 Running role specific features
 ==============================
-Add role name as tag to the scenario or feature and it would be run only on nodes that have this role.
+Add role name as tag to the scenario or feature and it would be run only on nodes that have this role. Features/scenarios without tags would be run always.
 
 Examples
 ========
 
-Simple example - check that `apache` is running:
+Simple example - check that Apache is running:
 
 ```gherkin
 @appserver
