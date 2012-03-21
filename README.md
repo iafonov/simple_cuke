@@ -2,9 +2,9 @@
 
 Description
 ===========
-Cookbook provides dead simple ability to test & verify node setup after chef run using cucumber & aruba. Unlike its competitors it is designed to be fully understood and ready to use in less then 5 minutes by the average developer.
+Cookbook provides dead simple ability to test & verify node setup after chef run using [cucumber](https://github.com/cucumber/cucumber) & [aruba](https://github.com/cucumber/aruba). Unlike its competitors it is designed to be fully understood and ready to use in less then 5 minutes by the average developer.
 
-It could be used as a tool to support BDD style development.
+It could be used as a tool to support BDD style in development of your infrastructure.
 
 How it works
 ============
@@ -32,11 +32,13 @@ Add role name as tag to the scenario or feature and it would be run only on node
 Example
 =======
 
-		Feature: Web server
+```gherkin
+Feature: Web server
 
-		@appserver
-		Scenario: Apache should be running
-		  When I successfully run `ps aux`
-		  Then the output should contain "apache"
+@appserver
+Scenario: Apache should be running
+  When I successfully run `ps aux`
+  Then the output should contain "apache"
+```
 
 
