@@ -27,7 +27,7 @@ Usage
 
 Running role specific features
 ==============================
-Add role name as tag to the scenario or feature and it would be run only on nodes that has this role.
+Add role name as tag to the scenario or feature and it would be run only on nodes that have this role.
 
 Example
 =======
@@ -40,5 +40,3 @@ Scenario: Apache should be running
   When I successfully run `ps aux`
   Then the output should contain "apache"
 ```
-
-

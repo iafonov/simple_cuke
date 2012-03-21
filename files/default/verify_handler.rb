@@ -5,10 +5,11 @@ class VerifyHandler < Chef::Handler
   end
 
   def report
+    puts green("Running test suite in #{@path}")
     if run_tests
-      puts "\033[32mTest Suite OK\033[30m"
+      puts green("Test Suite OK")
     else
-      puts "\033[31mTest Suite Failed\033[30m"
+      puts red("Test Suite Failed")
     end
   end
 
@@ -24,5 +25,13 @@ private
 
   def roles_tags
     @excluded_roles.map{|role| "~@#{role}"}.join(",")
+  end
+
+  def green(str)
+    "\033[32m#{str}\033[30m"
+  end
+
+  def red(str)
+    "\033[31m#{str}\033[30m"
   end
 end
