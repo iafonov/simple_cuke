@@ -1,8 +1,8 @@
-## Simple Cuke
+## Simple Cuke For Chef
 
 Description
 ===========
-Cookbook provides dead simple ability to test & verify node setup after chef run using [cucumber](https://github.com/cucumber/cucumber) & [aruba](https://github.com/cucumber/aruba). Unlike its competitors it is designed to be fully understood and ready to use in less then 5 minutes by the average developer.
+Cookbook provides dead simple ability to test & verify node setup after chef run using [cucumber](https://github.com/cucumber/cucumber) & [aruba](https://github.com/cucumber/aruba). Unlike its competitors it's designed to be fully understood and ready to use in less then 5 minutes by the average developer.
 
 It could be used as a tool to support BDD style in development of your infrastructure.
 
@@ -29,14 +29,44 @@ Running role specific features
 ==============================
 Add role name as tag to the scenario or feature and it would be run only on nodes that have this role.
 
-Example
-=======
+Examples
+========
+
+Simple example - check that `apache` is running:
 
 ```gherkin
 @appserver
 Feature: Application server
 
-Scenario: Apache should be running
+Scenario: Apache configuration check
   When I successfully run `ps aux`
   Then the output should contain "apache"
+```
+
+Slightly more advanced example: check services are running, bind to their ports and are not blocked by firewall:
+
+```gherkin
+@base
+Feature: Services
+
+Scenario Outline: Service should be running and bind to port
+  When I run `lsof -i :<port>`
+  Then the output should match /<service>.*<user>/
+
+  Examples:
+    | service | user     | port |
+    | master  | root     |   25 |
+    | apache2 | www-data |   80 |
+    | dovecot | root     |  110 |
+    | mysqld  | mysql    | 3306 |
+
+Scenario Outline: Service should not be blocked by firewall
+  When I run `ufw status`
+  Then the output should match /<service>.*<action>/
+
+  Examples:
+    | service | action |
+    | OpenSSH |  ALLOW |
+    | Apache  |  ALLOW |
+    | Postfix |  ALLOW |
 ```
