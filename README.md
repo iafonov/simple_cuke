@@ -1,4 +1,4 @@
-# simple_cuke chef cookbook
+# simple_cuke
 
 Description
 ===========
