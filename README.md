@@ -2,7 +2,7 @@
 
 Description
 ===========
-This chef cookbook provides dead simple way to test and verify node's setup after chef run using [cucumber](https://github.com/cucumber/cucumber) and [aruba](https://github.com/cucumber/aruba). Unlike its competitors it's designed to be fully understood and ready to use in less then 5 minutes by the average developer.
+This chef cookbook provides dead simple way to test and verify node's setup after chef run using [cucumber](https://github.com/cucumber/cucumber) and [aruba](https://github.com/cucumber/aruba). Unlike [similar](https://github.com/Atalanta/cucumber-chef) [tools](https://github.com/hedgehog/cuken) it's designed to be fully understood and ready to use in less then 5 minutes by the average developer.
 
 It could be used as a tool to support BDD style in development of your infrastructure and as a regression testing tool.
 
@@ -37,7 +37,7 @@ The cookbook will automatically install and link aruba gem for you. Aruba is a s
 
 Custom steps
 ============
-There is no restrictions - you can use your own defined steps. Put the step definitions into `features/step_definitions/[younameit]_steps.rb` file and they would be loaded automatically. 
+There are no restrictions - you can use your own defined steps. Put the step definitions into `features/step_definitions/[younameit]_steps.rb` file and they would be loaded automatically. 
 
 Examples
 ========
@@ -53,7 +53,7 @@ Scenario: Apache configuration check
   Then the output should contain "apache"
 ```
 
-Slightly more advanced example: check services are running, bind to their ports and are not blocked by firewall:
+Slightly more advanced example: check services are running, bind to their ports and aren't blocked by firewall:
 
 ```gherkin
 @base
@@ -85,7 +85,7 @@ How it works (in details)
 =========================
 The idea behind implementation is to be as simple and straightforward as possible. The workflow consists of the following three steps:
 
-1. Cookbook synchronizes the `files/default/suite` cookbook's folder with remote node via calling `remote_directory` LWRP.
+1. Default recipe synchronizes the `files/default/suite` cookbook's folder with remote node via calling `remote_directory` LWRP.
 2. [Chef handler](http://wiki.opscode.com/display/chef/Exception+and+Report+Handlers) is registered.
 3. When handler is executed it installs the bundle (it consists of cucumber & aruba) and runs cucumber features.
 
