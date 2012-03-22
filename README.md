@@ -6,6 +6,8 @@ This chef cookbook provides dead simple way to test and verify node's setup afte
 
 It could be used as a tool to support BDD style in development of your infrastructure and as a regression testing tool.
 
+You can find some background and more detailed information [here](http://iafonov.github.com/blog/pragmatic-infrastructure-testing-with-cucumber.html).
+
 Requirements
 ============
 Cookbook depends on Opscode's [chef_handler](http://community.opscode.com/cookbooks/chef_handler) cookbook. (Run `knife cookbook site install chef_handler` to install it)
