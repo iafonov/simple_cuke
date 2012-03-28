@@ -87,13 +87,15 @@ Reporters
 
 By default reporting is done to console but you can override this behavior and add custom reporter to `files/default/reporters` folder. Reporter is a plain ruby class with the following skeleton:
 
-		class CustomReporter
-		  def success(report)
-		  end
+```ruby
+class CustomReporter
+  def success(report)
+  end
 
-		  def fail(report)
-		  end
-		end
+  def fail(report)
+  end
+end
+```
 
 You can set reporter via `node["simple_cuke"]["reporter"]` attribute. (If your class has name `CustomReporter` you should set this attribute value to `custom`)
 
