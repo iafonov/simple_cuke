@@ -13,7 +13,7 @@ chef_handler "VerifyHandler" do
             :reporters_path => reporters_path,
             :node_roles     => node.roles,
             :all_roles      => search(:role, "name:*").map{ |role| role.name },
-            :reporter       => :console
+            :reporter       => node["simple_cuke"]["reporter"]
 end
 
 remote_directory reporters_path do

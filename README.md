@@ -6,8 +6,6 @@ This chef cookbook provides dead simple way to test and verify node's setup afte
 
 It could be used as a tool to support BDD style in development of your infrastructure and as a regression testing tool.
 
-You can find some background and more detailed information [here](http://iafonov.github.com/blog/pragmatic-infrastructure-testing-with-cucumber.html).
-
 Requirements
 ============
 Cookbook depends on Opscode's [chef_handler](http://community.opscode.com/cookbooks/chef_handler) cookbook. (Run `knife cookbook site install chef_handler` to install it)
@@ -17,6 +15,7 @@ There are no additional limitations on environment. You can use it with any kind
 Attributes
 ==========
 * `node["simple_cuke"]["suite_path"]` - Location for the test suite on the target node (`/var/chef/handlers/suite` by default)
+* `node["simple_cuke"]["reporter"]` - Reporter which would be used to notify you results of tests.
 
 Usage
 =====
@@ -82,6 +81,24 @@ Scenario Outline: Service should not be blocked by firewall
     | Apache  |  ALLOW |
     | Postfix |  ALLOW |
 ```
+
+Reporters
+=========
+
+By default reporting is done to console but you can override this behavior and add custom reporter to `files/default/reporters` folder. Reporter is a plain ruby class with the following skeleton:
+
+		class CustomReporter
+		  def success(report)
+		  end
+
+		  def fail(report)
+		  end
+		end
+
+You can set reporter via `node["simple_cuke"]["reporter"]` attribute. (If your class has name `CustomReporter` you should set this attribute value to `custom`)
+
+For example you can send an email if test suite failed, write it to file or notify monitoring service.
+
 <a name="details"></a>
 How it works (in details)
 =========================
@@ -90,7 +107,5 @@ The idea behind implementation is to be as simple and straightforward as possibl
 1. Default recipe synchronizes the `files/default/suite` cookbook's folder with remote node via calling `remote_directory` LWRP.
 2. [Chef handler](http://wiki.opscode.com/display/chef/Exception+and+Report+Handlers) is registered.
 3. When handler is executed it installs the bundle (it consists of cucumber & aruba) and runs cucumber features.
-
-For now reporting is done only to console.
 
 © 2012 [Igor Afonov](http://iafonov.github.com)
