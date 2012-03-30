@@ -20,8 +20,8 @@ Attributes
 Usage
 =====
 1. Install this cookbook to your chef repo. (`git clone git://github.com/iafonov/simple_cuke.git cookbooks/simple_cuke`)
-2. Add `recipe[simple_cuke]` to run_list
-3. Start writing cucumber features and place them in `files/default/suite/features` folder
+2. Add `recipe[simple_cuke]` to `run_list`
+3. Start writing cucumber features and place them in `files/default/features` folders of cookbooks
 4. Run `chef-client` and enjoy
 
 How it works
@@ -106,7 +106,7 @@ How it works (in details)
 =========================
 The idea behind implementation is to be as simple and straightforward as possible. The workflow consists of the following three steps:
 
-1. Default recipe synchronizes the `files/default/suite` cookbook's folder with remote node via calling `remote_directory` LWRP.
+1. Default recipe synchronizes the `files/default/suite` folders of cookbooks with remote node via calling `remote_directory` LWRP.
 2. [Chef handler](http://wiki.opscode.com/display/chef/Exception+and+Report+Handlers) is registered.
 3. When handler is executed it installs the bundle (it consists of cucumber & aruba) and runs cucumber features.
 
