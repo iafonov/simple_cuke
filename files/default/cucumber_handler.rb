@@ -18,7 +18,7 @@ class CucumberHandler < Chef::Handler
 private
 
   def install_bundle
-    `cd #{@suite_path} && bundle install`
+    `cd #{@suite_path} && bundle install --deployment`
   end
 
   def run_tests
