@@ -24,7 +24,6 @@ end
 
 remote_directory suite_path do
   source 'suite'
-  purge true
   recursive true
 end
 
