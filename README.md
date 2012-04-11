@@ -108,4 +108,8 @@ The idea behind implementation is to be as simple and straightforward as possibl
 2. [Chef handler](http://wiki.opscode.com/display/chef/Exception+and+Report+Handlers) is registered.
 3. When handler is executed it installs the bundle (it consists of cucumber & aruba) and runs cucumber features.
 
+## Contributors
+
+* [Chris Griego](http://www.boldpx.com/)
+
 © 2012 [Igor Afonov](http://iafonov.github.com)
