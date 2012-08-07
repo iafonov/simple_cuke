@@ -2,6 +2,10 @@ suite_path     = node['simple_cuke']['suite_path']
 handler_path   = File.join(node['chef_handler']['handler_path'], 'cucumber_handler.rb')
 reporters_path = File.join(node['chef_handler']['handler_path'], 'reporters')
 
+directory File.join(node['chef_handler']['handler_path'] do
+  action :create
+end.run_action(:create)
+
 cookbook_file handler_path do
   source 'cucumber_handler.rb'
 end.run_action(:create)
