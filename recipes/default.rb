@@ -1,6 +1,7 @@
 suite_path     = node['simple_cuke']['suite_path']
 handler_path   = File.join(node['chef_handler']['handler_path'], 'cucumber_handler.rb')
 reporters_path = File.join(node['chef_handler']['handler_path'], 'reporters')
+tested_cookbooks = Array(node['simple_cuke']['cookbooks'])
 
 directory File.join(node['chef_handler']['handler_path']) do
   action :create
@@ -32,8 +33,8 @@ remote_directory suite_path do
 end
 
 # code borrowed from https://github.com/btm/minitest-handler-cookbook/blob/master/recipes/default.rb
-node['recipes'].each do |recipe|
-  cookbook_name = recipe.split('::').first
+p tested_cookbooks
+tested_cookbooks.each do |cookbook_name|
   remote_directory cookbook_name do
     source 'features'
     cookbook cookbook_name

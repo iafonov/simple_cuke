@@ -1,4 +1,4 @@
-class CucumberHandler < Chef::Handler  
+class CucumberHandler < Chef::Handler
   def initialize(options)
     @suite_path = options[:suite_path]
     @reporters_path = options[:reporters_path]
