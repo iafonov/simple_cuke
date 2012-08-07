@@ -38,7 +38,7 @@ The cookbook will automatically install and link aruba gem for you. Aruba is a s
 
 ## Custom steps
 
-There are no restrictions - you can use your own defined steps. Put the step definitions into `features/step_definitions/[younameit]_steps.rb` file and they would be loaded automatically. 
+There are no restrictions - you can use your own defined steps. Put the step definitions into `features/step_definitions/[younameit]_steps.rb` file and they would be loaded automatically.
 
 ## Examples
 
@@ -112,4 +112,4 @@ The idea behind implementation is to be as simple and straightforward as possibl
 
 * [Chris Griego](http://www.boldpx.com/)
 
-© 2012 [Igor Afonov](http://iafonov.github.com)
+&copy; 2012 [Igor Afonov](http://iafonov.github.com)
