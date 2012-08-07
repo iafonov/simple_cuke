@@ -16,6 +16,7 @@ There are no additional limitations on environment. You can use it with any kind
 
 * `node["simple_cuke"]["suite_path"]` - Location for the test suite on the target node (`/var/chef/handlers/suite` by default)
 * `node["simple_cuke"]["reporter"]` - Reporter which would be used to notify you results of tests.
+* `node["simple_cuke"]["cookbooks"]` - Array of cookbooks which have supplied tests
 
 ## Usage
 
